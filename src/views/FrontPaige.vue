@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
+import Newsletter from '../components/NewsLetter.vue';
 
 </script>
 
@@ -11,6 +12,7 @@ import HeroSection from '../components/HeroSection.vue';
  <img src="@/assets/img/froe.png" alt="basket" class="basket" />
 </div>
 <HeroSection/>
+<Newsletter/>
 </template>
 
 
