@@ -9,7 +9,7 @@ const toggleMenu = () => {
 
 <template>
 <nav class="menu">
-  <RouterLink to="/FrontPaige.vue">
+  <RouterLink to="/">
     <img src="@/assets/img/logo.png" alt="Logo" class="logo" /></RouterLink>
     <div class="basket-links">
     <RouterLink to="/Basket.vue">
