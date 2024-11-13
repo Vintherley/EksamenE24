@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
 import Newsletter from '../components/NewsLetter.vue';
+import Slide from '../components/SlideProduct.vue';
 
 </script>
 
@@ -13,6 +14,7 @@ import Newsletter from '../components/NewsLetter.vue';
 </div>
 <HeroSection/>
 <Newsletter/>
+<Slide/>
 </template>
 
 
