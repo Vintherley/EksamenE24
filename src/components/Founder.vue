@@ -1,7 +1,10 @@
+<script setup>
+
+</script>
 <template>
     <div class="team">
       <div class="member">
-        <img src="@/assets/img/charlotte.jpg" alt="Charlotte Lund" class="profile-pic" />
+        <img src="@/assets/img/charlotte.png" alt="Charlotte Lund" class="profile-pic" />
         <h3>Charlotte Lund</h3>
         <p>CEO & Founder af Camelina.</p>
         <p>Jeg er med ude i marken, og står for at gør olien klar til slag. Det sammen med frøene.</p>
@@ -10,14 +13,14 @@
       </div>
   
       <div class="member">
-        <img src="@/assets/img/martin.jpg" alt="Martin Nielsen" class="profile-pic" />
+        <img src="@/assets/img/martin.png" alt="Martin Nielsen" class="profile-pic" />
         <h3>Martin Nielsen</h3>
         <p>Co-founder.</p>
         <p>Martin hjælper til med at gøre olien og frøene klar. Men maler også en del ved siden af.</p>
       </div>
   
       <div class="member">
-        <img src="@/assets/img/christian.jpg" alt="Christian" class="profile-pic" />
+        <img src="@/assets/img/christian.png" alt="Christian" class="profile-pic" />
         <h3>Christian</h3>
         <p>Christian er en af vores lokale landmænd, som kender til en hver mark. Derudover er han en dygtig økologisk landmand. Alt dette gør ham til en rigtig god samarbejdspartner.</p>
       </div>

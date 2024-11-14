@@ -17,7 +17,7 @@ const toggleMenu = () => {
   <button class="burger-menu" @click="toggleMenu">☰</button> <!-- Burger-menu-knap -->
   <div :class="{ 'nav-links': true, 'active': isMenuOpen }">
     <RouterLink to="/" class="nav-link">Forside</RouterLink>
-    <RouterLink to="/AboutOS.vue" class="nav-link">Om Os</RouterLink>
+    <router-link to="/aboutos" class="nav-link">Om os</router-link>
     <RouterLink to="/webshop.vue" class="nav-link">Shop</RouterLink>
   </div>
 </div>
