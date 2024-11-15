@@ -1,3 +1,5 @@
+<script setup>
+</script>
 <template>
     <div class="market-locations">
       <p>Udover vores lokation i Stenlille, er vi også til stede på forskellige markeder</p>
@@ -21,12 +23,15 @@
   .market-locations {
     background-color: #2e4925;
     color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 20px 10px; 
+    width: 80%;
+    max-width: 600px; 
+    margin: 0 auto; 
   }
   
   .location {
     margin-top: 10px;
   }
   </style>
+  
   
