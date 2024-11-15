@@ -53,6 +53,7 @@
 }
 
 .profile-pic {
+  margin-top: 40px;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -71,6 +72,7 @@ h3 {
   color: #060606;
   text-align: left; 
   margin-bottom: 5px; 
+  justify-content: left;
 }
 
 .role {
