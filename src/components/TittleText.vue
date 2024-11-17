@@ -15,6 +15,7 @@
 <style scoped>
 .title-text {
   text-align: left;
+  padding:20px
 }
 
 h1 {

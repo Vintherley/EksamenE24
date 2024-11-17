@@ -2,6 +2,7 @@
 </script>
 <template>
     <div class="market-locations">
+      <h3> Grønt Marked</h3>
       <p>Udover vores lokation i Stenlille, er vi også til stede på forskellige markeder</p>
       
       <div class="location">
@@ -23,8 +24,8 @@
   .market-locations {
     background-color: #2e4925;
     color: #ffffff;
-    padding: 20px 10px; 
-    width: 80%;
+    padding:20px;
+    width: 100%;
     max-width: 600px; 
     margin: 0 auto; 
   }
