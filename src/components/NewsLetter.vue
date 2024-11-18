@@ -56,8 +56,8 @@ async function subscribe() {
 .box-news{
     background-color:#194011;
     height: 90px;
-    width: 375px;
-    margin-left: -8px;
+    width: 395px;
+    margin-left: -7px;
 
 }
 h3{

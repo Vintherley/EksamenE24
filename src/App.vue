@@ -14,6 +14,8 @@ import navbar from './components/Header.vue'
 header {
   line-height: 1.5;
   max-height: 100vh;
+  margin: 0;
+  
 }
 
 .logo {
@@ -25,7 +27,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+ 
 }
 
 nav a.router-link-exact-active {
