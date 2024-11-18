@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import navbar from './components/Header.vue'
+import LastFooter from './components/LastFooter.vue';
+import SecondFooter from './components/SecondFooter.vue';
 </script>
 
 <template>
@@ -8,6 +10,10 @@ import navbar from './components/Header.vue'
 
 
   <RouterView />
+  <SecondFooter />
+
+
+  <LastFooter/>
 </template>
 
 <style scoped>
