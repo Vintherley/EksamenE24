@@ -8,7 +8,7 @@ import TittleText from '../components/TittleText.vue';
 <template>
   <!-- Use the Founder component here -->
   <div>
-    <h2>About Us</h2>
+    <h2>Om Os</h2>
     <TittleText/>
     <Founder />
     <GreenMarket/>
