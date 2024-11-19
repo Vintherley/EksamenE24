@@ -21,14 +21,16 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: AboutOs
     },
+    
+      {
+        path: '/webshop',
+        name: 'webshop',
+        component: WebShop,
+      },
+    
     {
-      path: '/Webshop',
-      name: 'Webshop',
-      component: WebShop
-    },
-    {
-      path: '/Basket',
-      name: 'Basket',
+      path: '/basket',
+      name: 'basket',
       component: Basket
     },
   ]

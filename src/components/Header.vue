@@ -18,7 +18,7 @@ const toggleMenu = () => {
   <div :class="{ 'nav-links': true, 'active': isMenuOpen }">
     <RouterLink to="/" class="nav-link">Forside</RouterLink>
     <router-link to="/aboutos" class="nav-link">Om os</router-link>
-    <RouterLink to="/webshop.vue" class="nav-link">Shop</RouterLink>
+    <RouterLink to="/webshop" class="nav-link">Shop</RouterLink>
   </div>
 </div>
 </nav>
