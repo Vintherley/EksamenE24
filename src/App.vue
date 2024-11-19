@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import navbar from './components/Header.vue'
 import LastFooter from './components/LastFooter.vue';
 import SecondFooter from './components/SecondFooter.vue';
+import FirstFooter from './components/FirstFooter.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import SecondFooter from './components/SecondFooter.vue';
 
 
   <RouterView />
+  <FirstFooter/>
   <SecondFooter />
 
 
