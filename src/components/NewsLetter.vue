@@ -49,7 +49,9 @@ async function subscribe() {
       <button type="submit" class="news-btn">Abonner</button>
     </form>
     <p v-if="message" :class="messageType">{{ message }}</p>
+    <img src="@/assets/img/olie.png" alt="illustration af camelina olie" class="olie-img" />
   </div>
+  
 </template>
 
 <style>
@@ -74,9 +76,9 @@ h3{
 }
 
 .input-news {
-    width: 250px;
+    width: 200px;
     height: 25px;
-    margin-left: 15px;
+    margin-left: 60px;
 }
 
 .news-btn {
@@ -84,5 +86,11 @@ h3{
     height: 32px;
     border-radius: 0px 6px 6px 0;
     background-color: #FCDB7E;
+}
+.olie-img{
+  margin-top: -35px;
+  margin-left:10px;
+  z-index: 2;
+
 }
 </style>
