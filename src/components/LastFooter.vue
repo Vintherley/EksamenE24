@@ -22,7 +22,7 @@
 
 <style scoped>
 .last-footer {
-  background-color: #2e4820; /* Grøn baggrund */
+  background-color: #194011; /* Grøn baggrund */
   color: #f0e5cd; /* Lys tekst */
   font-family: Arial, sans-serif;
   padding: 20px;
