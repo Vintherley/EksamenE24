@@ -67,8 +67,11 @@ h3{
     justify-content: center;
     color: #EDEAD0;
     margin: none;
-
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
 }
+
+
 .newsletter-form {
     display: flex;
     justify-content: left; /* Sørger for at input og knap er centreret vertikalt */

@@ -27,5 +27,8 @@ import Contact from '../components/ContactForm.vue';
     padding: 10px;
     align-items: center;
     justify-self: center;
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 </style>

@@ -6,7 +6,7 @@ const products = ref([
   {
     name: 'Økologisk Dansk Camelina olie <br>250ml',
     features: ['Lang holdbarhed', 'Lokal dyrket', 'Lokal produceret', 'Omega 3 fedtsyrer'],
-    usage: ['Salat', 'Stegning', 'Erstatter olivenolie'],
+    usage: ['Salat', 'Stegning', 'Bagning'],
     price: '105,00 kr.',
     image: new URL('@/assets/img/product2.png', import.meta.url).href,
     alt: 'Camelina olie og frø',
@@ -79,6 +79,10 @@ h2 {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
 }
 
 .slideshow-container {
@@ -96,20 +100,23 @@ h2 {
 
 .texts-box {
   background-color: #96bdc6;
-  width: 200px;
-  height: 223px;
+  width: 220px;
+  height: 225px;
   border-radius: 6px;
   padding: 5px;
 }
 
 .texts-box p {
   display: flex;
-  font-size: 15px;
-  margin: 0;
+  font-size: 14px;
+  margin: 0 3px ;
+  margin-bottom: -10px;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
 }
 
 ul li {
-  font-size: 11px;
+  font-size: 12px;
   margin: 0;
 }
 
