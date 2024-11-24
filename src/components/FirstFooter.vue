@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="decoration">
-        <img src="@/assets/img/froe.jpg" alt="Frø" />
+        <img src="@/assets/img/froeillustration.png" alt="Fro" />
       </div>
     </footer>
   </template>
@@ -27,10 +27,11 @@
   }
   
   .social-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  display: flex;
+  flex-direction: row; /* Placerer teksten over ikonerne */
+  align-items: center;    /* Centrerer elementerne vandret */
+  gap: 40px;              /* Skaber afstand mellem teksten og ikonerne */
+}
   
   .social-container p {
     font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -40,9 +41,10 @@
   }
   
   .social-icons {
-    display: flex;
-    gap: 10px;
-  }
+  display: flex;
+  flex-direction: row;    /* Sørger for at ikonerne er på samme linje */
+  gap: 25px;              /* Skaber afstand mellem ikonerne */
+}
   
   .social-icons img {
     width: 30px;
@@ -51,7 +53,8 @@
   }
   
   .decoration img {
-    height: 50px;
+    height: 100px;
+    margin-top:-50px ;
   }
   </style>
   
