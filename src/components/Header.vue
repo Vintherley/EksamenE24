@@ -1,13 +1,33 @@
 <script setup>
-import { ref, inject } from 'vue';
+import { ref, inject, onMounted, onUnmounted } from 'vue';
 
 const isMenuOpen = ref(false);
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
+  if (window.innerWidth > 768) {
+    isMenuOpen.value = false; // Automatisk lukning på bred skærm
+  } else {
+    isMenuOpen.value = !isMenuOpen.value;
+  }
 };
 
+// Funktion til at lukke menu, når man klikker udenfor
+const handleOutsideClick = (e) => {
+  const menu = document.querySelector('.menu');
+  if (menu && !menu.contains(e.target)) {
+    isMenuOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleOutsideClick);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleOutsideClick);
+});
+
 // Hent global state for indkøbskurven
-const cartItems = inject('cartItems');
+const cartItems = inject('totalItems'); // Brug det navn, der matches med din App.vue
 </script>
 
 <template>
@@ -105,6 +125,16 @@ const cartItems = inject('cartItems');
 /* Styling for menuen (aktiv/åben tilstand) */
 .nav-links.active {
   display: flex; /* Gør menuen synlig */
+  animation: fadeIn 0.3s ease-out; /* Tilføjer en fade-effekt */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Styling for links */
@@ -116,9 +146,6 @@ const cartItems = inject('cartItems');
   transition: background-color 0.3s ease; /* Smooth hover-effekt */
 }
 
-.nav-links a:hover {
-  background-color: #FCDB7E; /* Baggrundsfarve ved hover */
-  color: #194011; /* Tekstfarve ved hover */
-}
+
 
 </style>

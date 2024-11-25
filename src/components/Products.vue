@@ -1,6 +1,5 @@
 <script setup>
 import { reactive, ref, inject } from "vue";
-
 // Produkter
 import product2Image from "@/assets/img/product3.jpg";
 import product1Img from "@/assets/img/froeproduct.jpg";
@@ -41,73 +40,38 @@ const products = reactive([
   },
 ]);
 
-// Reactive state til popup
+
+
 const showPopup = ref(false);
 const popupMessage = ref("");
 
-// Inject den globale addToCart funktion fra App.vue
-const addToGlobalCart = inject("addToCart");
+// Global `addToCart`-funktion
+const addToCart = inject("addToCart");
 
-// Funktioner
-const increaseQuantity = (product) => {
-  product.quantity++;
-};
-
-const decreaseQuantity = (product) => {
-  if (product.quantity > 1) {
-    product.quantity--;
-  }
-};
-
-const addToCart = (product) => {
-  // Tilføj produktet til den globale kurv
-  for (let i = 0; i < product.quantity; i++) {
-    addToGlobalCart();
-  }
-
-  // Vis popup med besked
+const handleAddToCart = (product) => {
+  addToCart({ ...product, quantity: product.quantity });
   popupMessage.value = `Tilføjet ${product.quantity} stk. af "${product.name}" til kurven!`;
   showPopup.value = true;
-
-  // Skjul popup efter 3 sekunder
   setTimeout(() => {
     showPopup.value = false;
   }, 3000);
-};
-
-const closePopup = () => {
-  showPopup.value = false; // Luk popup manuelt
-};
-
-const readMore = (product) => {
-  console.log(`Læs mere om "${product.name}"!`);
 };
 </script>
 
 <template>
   <div class="webshop">
     <div v-for="product in products" :key="product.id" class="product-item">
-      <img :src="product.imageSrc" :alt="product.imageAlt" class="product-image" />
-      <h3 class="product-name">{{ product.name }}</h3>
-      <p class="product-price">{{ product.price }} DKK</p>
-
-      <div class="quantity-controls">
-        <button @click="decreaseQuantity(product)">-</button>
-        <span class="box">{{ product.quantity }}</span>
-        <button @click="increaseQuantity(product)">+</button>
+        <img :src="product.imageSrc" :alt="product.imageAlt" class="product-image"/>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.price }} DKK</p>
+      <div>
+        <button @click="product.quantity++">+</button>
+        <span>{{ product.quantity }}</span>
+        <button @click="product.quantity > 1 ? product.quantity-- : null">-</button>
       </div>
-
-      <div class="action-buttons">
-        <button class="add-to-cart" @click="addToCart(product)">Tilføj til kurv</button>
-        <button class="read-more" @click="readMore(product)">Læs mere</button>
-      </div>
+      <button @click="handleAddToCart(product)">Tilføj til kurv</button>
     </div>
-  </div>
-
-  <!-- Popup -->
-  <div v-if="showPopup" class="popup">
-    <p>{{ popupMessage }}</p>
-    <button @click="closePopup">Luk</button>
+    <div v-if="showPopup" class="popup">{{ popupMessage }}</div>
   </div>
 </template>
 
