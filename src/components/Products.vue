@@ -1,48 +1,54 @@
-
-
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref, inject } from "vue";
 
-import product2Image from '@/assets/img/product3.jpg';
-import product1Img from '@/assets/img/froeproduct.jpg';
-import product3Img from '@/assets/img/seabe.png'
+// Produkter
+import product2Image from "@/assets/img/product3.jpg";
+import product1Img from "@/assets/img/froeproduct.jpg";
+import product3Img from "@/assets/img/seabe.png";
 
 const products = reactive([
   {
     id: 1,
-    name: 'Økologisk Dansk Camelina olie - 250ml',
+    name: "Økologisk Dansk Camelina olie - 250ml",
     price: 105,
     imageSrc: product2Image,
-    imageAlt: 'Produkt billede af en flaske camelina olie.',
+    imageAlt: "Produkt billede af en flaske camelina olie.",
     quantity: 1,
   },
   {
     id: 2,
-    name: 'Økologisk Dansk Camelina frø - 100g',
+    name: "Økologisk Dansk Camelina frø - 100g",
     price: 25,
     imageSrc: product1Img,
-    imageAlt: 'Produkt billede af en flaske camelina olie.',
+    imageAlt: "Produkt billede af camelina frø.",
     quantity: 1,
   },
   {
     id: 3,
-    name: 'Økologisk Dansk Camelina frø - 250g',
+    name: "Økologisk Dansk Camelina frø - 250g",
     price: 50,
     imageSrc: product1Img,
-    imageAlt: 'Produkt billede af en flaske camelina olie.',
+    imageAlt: "Produkt billede af camelina frø.",
     quantity: 1,
   },
   {
     id: 4,
-    name: 'Økologisk Dansk Camelina sæbe - 1 stk.',
+    name: "Økologisk Dansk Camelina sæbe - 1 stk.",
     price: 50,
     imageSrc: product3Img,
-    imageAlt: 'Produkt billede af en flaske camelina olie.',
+    imageAlt: "Produkt billede af camelina sæbe.",
     quantity: 1,
   },
 ]);
 
-// Metoder
+// Reactive state til popup
+const showPopup = ref(false);
+const popupMessage = ref("");
+
+// Inject den globale addToCart funktion fra App.vue
+const addToGlobalCart = inject("addToCart");
+
+// Funktioner
 const increaseQuantity = (product) => {
   product.quantity++;
 };
@@ -54,9 +60,23 @@ const decreaseQuantity = (product) => {
 };
 
 const addToCart = (product) => {
-  console.log(
-    `Tilføjet ${product.quantity} stk. af "${product.name}" til kurven!`
-  );
+  // Tilføj produktet til den globale kurv
+  for (let i = 0; i < product.quantity; i++) {
+    addToGlobalCart();
+  }
+
+  // Vis popup med besked
+  popupMessage.value = `Tilføjet ${product.quantity} stk. af "${product.name}" til kurven!`;
+  showPopup.value = true;
+
+  // Skjul popup efter 3 sekunder
+  setTimeout(() => {
+    showPopup.value = false;
+  }, 3000);
+};
+
+const closePopup = () => {
+  showPopup.value = false; // Luk popup manuelt
 };
 
 const readMore = (product) => {
@@ -66,25 +86,28 @@ const readMore = (product) => {
 
 <template>
   <div class="webshop">
-    <div 
-      v-for="product in products" 
-      class="product-item"
-    >
+    <div v-for="product in products" :key="product.id" class="product-item">
       <img :src="product.imageSrc" :alt="product.imageAlt" class="product-image" />
       <h3 class="product-name">{{ product.name }}</h3>
       <p class="product-price">{{ product.price }} DKK</p>
-      
+
       <div class="quantity-controls">
         <button @click="decreaseQuantity(product)">-</button>
         <span class="box">{{ product.quantity }}</span>
         <button @click="increaseQuantity(product)">+</button>
       </div>
-      
+
       <div class="action-buttons">
         <button class="add-to-cart" @click="addToCart(product)">Tilføj til kurv</button>
         <button class="read-more" @click="readMore(product)">Læs mere</button>
       </div>
     </div>
+  </div>
+
+  <!-- Popup -->
+  <div v-if="showPopup" class="popup">
+    <p>{{ popupMessage }}</p>
+    <button @click="closePopup">Luk</button>
   </div>
 </template>
 
@@ -94,7 +117,7 @@ const readMore = (product) => {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-  
+  margin-bottom: 40px;
 }
 
 .product-item {
@@ -116,15 +139,14 @@ const readMore = (product) => {
 .product-name {
   font-size: 18px;
   font-weight: bold;
-  color:#FFFEF2;
+  color: #FFFEF2;
   margin-bottom: 8px;
 }
 
 .product-price {
   font-size: 16px;
-  color:#FFFEF2;
+  color: #FFFEF2;
   margin-bottom: 16px;
-
 }
 
 .quantity-controls {
@@ -137,25 +159,25 @@ const readMore = (product) => {
 .quantity-controls button {
   width: 20px;
   height: 20px;
-  margin-left:10px;
-  margin-right: 10px;
+  margin: 0 10px;
   font-size: 22px;
   border: none;
   background-color: #194011;
-  color:#FFFEF2;
+  color: #FFFEF2;
   cursor: pointer;
 }
 
-.box{
+.box {
   margin: 0 3px;
   font-size: 16px;
   font-weight: bold;
   background-color: #96BDC6;
   padding: 7px 10px;
-  border-radius: 6px
+  border-radius: 6px;
 }
-.action-buttons{
-  margin-top:-50px;
+
+.action-buttons {
+  margin-top: -50px;
   display: flex;
   flex-direction: column;
   justify-self: end;
@@ -170,21 +192,46 @@ const readMore = (product) => {
   height: 23px;
   border-radius: 6px;
   color: #323031;
-  
 }
 
-
-.add-to-cart {
-  background-color: #FCDB7E;
-  border: none;
-  border-radius: 6px;
-  color: #323031;
-}
-
+.add-to-cart,
 .read-more {
   background-color: #FCDB7E;
   border: none;
   border-radius: 6px;
   color: #323031;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #194011;
+  color: #FFFEF2;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+}
+
+.popup p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.popup button {
+  padding: 8px 12px;
+  background-color: #fcdb7e;
+  border: none;
+  border-radius: 6px;
+  color: #323031;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #f9c549;
 }
 </style>

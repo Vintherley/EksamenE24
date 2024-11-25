@@ -1,21 +1,29 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import navbar from './components/Header.vue'
-import LastFooter from './components/LastFooter.vue';
-import SecondFooter from './components/SecondFooter.vue';
+import { provide, ref } from 'vue';
+import Navbar from './components/Header.vue';
 import FirstFooter from './components/FirstFooter.vue';
+import SecondFooter from './components/SecondFooter.vue';
+import LastFooter from './components/LastFooter.vue';
+
+// Global state til indkøbskurven
+const cartItems = ref(0); // Antallet af varer i kurven
+
+// Funktion til at tilføje varer til kurven
+const addToCart = () => {
+  cartItems.value++;
+};
+
+// Gør state og funktion globalt tilgængelige
+provide('cartItems', cartItems);
+provide('addToCart', addToCart);
 </script>
 
 <template>
-  <navbar/>
-
-
+  <Navbar />
   <RouterView />
-  <FirstFooter/>
+  <FirstFooter />
   <SecondFooter />
-
-
-  <LastFooter/>
+  <LastFooter />
 </template>
 
 <style scoped>
@@ -23,7 +31,6 @@ header {
   line-height: 1.5;
   max-height: 100vh;
   margin: 0;
-  
 }
 
 .logo {
@@ -35,7 +42,6 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
- 
 }
 
 nav a.router-link-exact-active {

@@ -1,102 +1,124 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 
 const isMenuOpen = ref(false);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+// Hent global state for indkøbskurven
+const cartItems = inject('cartItems');
 </script>
 
 <template>
 <nav class="menu">
   <RouterLink to="/">
-    <img src="@/assets/img/logo.png" alt="Logo" class="logo" /></RouterLink>
-    <div class="basket-links">
-    <RouterLink to="/Basket.vue">
-        <img src="@/assets/img/basketimg.png" alt="basket" class="basket" /></RouterLink>
-  <button class="burger-menu" @click="toggleMenu">☰</button> <!-- Burger-menu-knap -->
-  <div :class="{ 'nav-links': true, 'active': isMenuOpen }">
-    <RouterLink to="/" class="nav-link">Forside</RouterLink>
-    <router-link to="/aboutos" class="nav-link">Om os</router-link>
-    <RouterLink to="/webshop" class="nav-link">Shop</RouterLink>
+    <img src="@/assets/img/logo.png" alt="Logo" class="logo" />
+  </RouterLink>
+  <div class="basket-links">
+    <RouterLink to="/Basket" class="basket-container">
+      <img src="@/assets/img/basketimg.png" alt="basket" class="basket" />
+      <span v-if="cartItems && cartItems > 0" class="badge">{{ cartItems }}</span>
+    </RouterLink>
+    <button class="burger-menu" @click="toggleMenu">☰</button>
+    <div :class="{ 'nav-links': true, 'active': isMenuOpen }">
+      <RouterLink to="/" class="nav-link">Forside</RouterLink>
+      <RouterLink to="/aboutos" class="nav-link">Om os</RouterLink>
+      <RouterLink to="/webshop" class="nav-link">Shop</RouterLink>
+    </div>
   </div>
-</div>
 </nav>
 </template>
 
+
 <style>
-@media (max-width: 768px) {
-    .burger-menu {
-  display: none;                   /* Skjul burger-menuen på desktop */
-  background: none;
-  border: none;
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #194011;
+  padding: 10px 20px;
+  color: #edead0;
+}
+
+.logo {
+  width: 70px;
+  height: auto;
+}
+
+.basket-links {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Afstand mellem ikonerne */
+}
+
+.basket-container {
+  position: relative;
+}
+
+.basket {
+  width: 24px;
+  height: 24px;
+}
+
+.burger-menu {
   font-size: 24px;
-  color: #EDEAD0;
+  background-color: transparent;
+  border: none;
+  color: #FFFEF2;
   cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
 }
 
-/* Mobil-version */
-@media (max-width: 768px) {
-.menu{
-    background-color: #194011;
-    width: 100vh;
-    height: 68px;
-    padding: 20px;
-    margin: 0px 10px 5px -10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-    
+.burger-menu:hover {
+  transform: scale(1.1); /* Gør knappen lidt større ved hover */
 }
-  .burger-menu {
-    display: block;   
-    background-color: #194011;           /* Vis burger-menuen på mobil */
-    
-  }
 
-  .nav-links {
-    display: none;                 /* Skjul links som standard */
-    flex-direction: column;
-    align-items: center;
-    background-color: #194011;
-    width: auto;
-    padding: 10px 0;
-  }
-
-  .nav-links.active {
-    position: absolute;
-    display: flex;
-    right: 0;
-    margin-top: 200px;
-    width: 135px;
-    z-index: 5;
-                    /* Vis links, når burger-menuen er åben */
-  }
-
-  .nav-link {
-    margin: 10px 0;                /* Plads mellem links */
-    font-size: 18px;
-    color:#EDEAD0; 
-    text-decoration: none;
-    
-  }
-  .logo{
-    width: 61px;
-    height: 70px;
-  }
-  .basket{
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 10px;
-  }
-  .basket-links{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 10px;
-  }
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: bold;
 }
+
+/* Styling for menuen (lukket tilstand) */
+.nav-links {
+  display: none; /* Skjul menuen som standard */
+  flex-direction: column; /* Sørg for, at links stables vertikalt */
+  gap: 10px; /* Afstand mellem links */
+  background-color: #194011; /* Baggrundsfarve */
+  padding: 10px; /* Polstring omkring links */
+  border-radius: 5px;
+  right: -10px;
+  position: absolute; /* Sikrer, at dropdown ikke flytter ikoner */
+  top: 100px; /* Placering under burger-menu */
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Styling for menuen (aktiv/åben tilstand) */
+.nav-links.active {
+  display: flex; /* Gør menuen synlig */
+}
+
+/* Styling for links */
+.nav-links a {
+  color: #FFFEF2; /* Tekstfarve */
+  text-decoration: none; /* Fjern understregning */
+  padding: 8px 12px; /* Polstring for klikbart område */
+  border-radius: 4px; /* Bløde hjørner */
+  transition: background-color 0.3s ease; /* Smooth hover-effekt */
+}
+
+.nav-links a:hover {
+  background-color: #FCDB7E; /* Baggrundsfarve ved hover */
+  color: #194011; /* Tekstfarve ved hover */
+}
+
 </style>
