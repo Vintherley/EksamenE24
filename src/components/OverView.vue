@@ -1,84 +1,140 @@
 <script setup>
-import { ref, computed } from "vue";
+import { inject, computed } from "vue";
 
-// Data for kurven (mock data, senere kan dette hentes globalt eller via en service)
-const cartItems = ref([
-  {
-    id: 1,
-    name: "Økologisk Dansk Camelina olie - 250ml",
-    price: 105,
-    imageSrc: product2Image,
-    imageAlt: "Produkt billede af en flaske camelina olie.",
-    quantity: 1,
-  },
-]);
+const cart = inject("cart");
+const removeFromCart = inject("removeFromCart");
+const updateQuantity = inject("updateQuantity");
 
-// Funktioner til at justere mængderne
-const increaseQuantity = (item) => {
-  item.quantity++;
-};
-
-const decreaseQuantity = (item) => {
-  if (item.quantity > 1) {
-    item.quantity--;
-  }
-};
-
-// Funktion til at fjerne en vare
-const removeItem = (itemId) => {
-  cartItems.value = cartItems.value.filter((item) => item.id !== itemId);
-};
+// Beregn samlet pris
+const total = computed(() =>
+  cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+);
+cart: [
+  { id: 1, name: "Produkt 1", price: 100, quantity: 2, imageSrc: "path/to/image1.jpg" },
+  { id: 2, name: "Produkt 2", price: 150, quantity: 1, imageSrc: "path/to/image2.jpg" }
+]
 </script>
 
 <template>
   <div class="basket-view">
-    <h2>Din kurv</h2>
+    <div class="b-title">
+        <h2>Indkøbskurv</h2>
+        <hr>
+    </div>
     <ul>
-      <li v-for="item in cartItems" :key="item.id" class="basket-item">
-        <div class="item-info">
-          <p>{{ item.name }}</p>
-          <p>{{ item.price }} DKK</p>
-        </div>
+      <li v-for="item in cart" :key="item.id">
+        <img :src="item.imageSrc" :alt="item.name" class="item-image" />
+        <p>{{ item.name }}</p>
+        <p>{{ item.price }} DKK</p>
         <div class="quantity-controls">
-          <button @click="decreaseQuantity(item)">-</button>
-          <span>{{ item.quantity }}</span>
-          <button @click="increaseQuantity(item)">+</button>
+          <button @click="updateQuantity(item.id, item.quantity - 1)">-</button>
+          <span class="b-box">{{ item.quantity }}</span>
+          <button @click="updateQuantity(item.id, item.quantity + 1)">+</button>
         </div>
-        <button class="remove-btn" @click="removeItem(item.id)">Fjern</button>
+        <button @click="removeFromCart(item.id)" class="remove-btn"> Fjern</button>
+        <hr class="b-hr">
       </li>
     </ul>
+    <p>Samlet pris: {{ total }} DKK</p>
+    <RouterLink to="/checkout"><button class="payment-btn">Gå til betaling</button></RouterLink>
+    
   </div>
 </template>
 
-<style scoped>
-.basket-view {
-  padding: 20px;
+<style>
+.basket-view{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border: 1px solid #323031 ;
+    width: 295px;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 10px;
 }
-
-.basket-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+.basket-box{
+    margin-top:60px;
+    margin-bottom: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    border: solid 1px #194011;
+    width: 300px;
+    height: 500px;
 }
-
-.item-info {
-  flex: 1;
+.basket-box h2{
+margin-left: 10px;
 }
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.item-image {
+  width: 50px; /* Tilpas størrelsen */
+  height: 50px;
+  object-fit: cover; /* Sørg for, at billedet ikke strækkes */
+  border-radius: 4px; /* Rund hjørnerne, hvis ønsket */
+  margin-right: 10px; /* Lidt afstand til teksten */
+  display: inline-block;
+  vertical-align: middle;
 }
-
-.remove-btn {
-  background-color: #e74c3c;
-  color: white;
+hr {
+  border: none; /* Fjern standardlinje */
+  height: 2px; /* Tykkelse af linjen */
+  background-color: #194011; /* Farve på linjen */
+  width: 295px; /* Fast bredde */
+  margin: 60px 0; /* Centrerer linjen horisontalt */
+}
+.hr-line{
+    margin-left: -165px;
+}
+.overview-basket{
+    margin-top: 80px;
+    margin-left:-300px;
+}
+.payment-btn{
+    margin: 5px;
+  background-color: #FCDB7E;
   border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
+  width: 99px;
+  height: 23px;
+  border-radius: 6px;
+  color: #323031;
 }
+.b-box{
+    margin: 0 3px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #96BDC6;
+  color: #323031;
+  padding: 7px 10px;
+  border-radius: 6px;
+}
+.b-title{
+  font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+.b-title hr{
+  margin-top: -20px;
+}
+.b-hr{
+  margin-left: -40px;
+  
+}
+.quantity-controls button {
+    color: #323031;
+    background-color: transparent;
+    border: none;
+}
+ul{
+    list-style: none;
+}
+.remove-btn{
+    display: flex;
+    flex-direction: row;
+    justify-self: end;
+    color: red;
+    background-color: transparent;
+    border: none;
+}
+
 </style>

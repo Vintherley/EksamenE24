@@ -64,12 +64,15 @@ const handleAddToCart = (product) => {
         <img :src="product.imageSrc" :alt="product.imageAlt" class="product-image"/>
       <h3>{{ product.name }}</h3>
       <p>{{ product.price }} DKK</p>
-      <div>
+      <div class="quantity-controls">
         <button @click="product.quantity++">+</button>
-        <span>{{ product.quantity }}</span>
+        <span class="box">{{ product.quantity }}</span>
         <button @click="product.quantity > 1 ? product.quantity-- : null">-</button>
       </div>
-      <button @click="handleAddToCart(product)">Tilføj til kurv</button>
+      <div class="action-buttons">
+        <button>Læs mere</button>
+        <button @click="handleAddToCart(product)">Tilføj til kurv</button>
+    </div>
     </div>
     <div v-if="showPopup" class="popup">{{ popupMessage }}</div>
   </div>
@@ -87,6 +90,7 @@ const handleAddToCart = (product) => {
 .product-item {
   border: 1px solid #ccc;
   background-color: #194011;
+  color: #FFFEF2;
   padding: 16px;
   text-align: center;
   border-radius: 8px;
@@ -136,6 +140,7 @@ const handleAddToCart = (product) => {
   font-size: 16px;
   font-weight: bold;
   background-color: #96BDC6;
+  color: #323031;
   padding: 7px 10px;
   border-radius: 6px;
 }
@@ -167,7 +172,7 @@ const handleAddToCart = (product) => {
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
