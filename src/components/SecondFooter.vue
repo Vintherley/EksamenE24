@@ -58,7 +58,7 @@
   
   .certification img,
   .smiley img {
-    width: 50px; /* Adjust size as needed */
+    width: 100px; /* Adjust size as needed */
     margin-bottom: 5px;
   }
   
