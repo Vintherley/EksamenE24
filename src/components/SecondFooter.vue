@@ -7,11 +7,10 @@
       <!-- Certifications and Smiley Section -->
       <div class="certification-section">
         <div class="certification">
-          <img src="@/assets/img/okologisk.png" alt="Stats-kontrolleret økologisk" />
+          <img src="@/assets/img/okologiskstats.jpg" alt="Stats-kontrolleret økologisk" />
         </div>
         <div class="smiley">
-          <img src="@/assets/img/smiley.png" alt="Smiley kontrolrapport" />
-          <p>Vores smiley<br /><a href="#">Kontrolrapport</a></p>
+          <img src="@/assets/img/smiley-rapport (1).jpg" alt="Smiley kontrolrapport" />
         </div>
       </div>
   
@@ -43,7 +42,8 @@
   
   .certification-section {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
   }
@@ -76,6 +76,7 @@
     border: none;
     border-top: 1px solid #2e4820;
     margin: 20px 0;
+    width:100%;
   }
   
   .payment-section p {
