@@ -35,23 +35,26 @@ const cartItems = inject('totalItems'); // Brug det navn, der matches med din Ap
   <RouterLink to="/">
     <img src="@/assets/img/logo.png" alt="Logo" class="logo" />
   </RouterLink>
-  <div class="basket-links">
-    <RouterLink to="/Basket" class="basket-container">
-      <img src="@/assets/img/basketimg.png" alt="basket" class="basket" />
-      <span v-if="cartItems && cartItems > 0" class="badge">{{ cartItems }}</span>
-    </RouterLink>
+  
+    
     <button class="burger-menu" @click="toggleMenu">☰</button>
     <div :class="{ 'nav-links': true, 'active': isMenuOpen }">
       <RouterLink to="/" class="nav-link">Forside</RouterLink>
       <RouterLink to="/aboutos" class="nav-link">Om os</RouterLink>
       <RouterLink to="/webshop" class="nav-link">Shop</RouterLink>
     </div>
+    <div class="basket-links">
+    <RouterLink to="/Basket" class="basket-container">
+      <img src="@/assets/img/basketimg.png" alt="basket" class="basket" />
+      <span v-if="cartItems && cartItems > 0" class="badge">{{ cartItems }}</span>
+    </RouterLink>
   </div>
 </nav>
 </template>
 
 
 <style>
+@media (max-width: 767px) {
 .menu {
   display: flex;
   justify-content: space-between;
@@ -145,7 +148,63 @@ const cartItems = inject('totalItems'); // Brug det navn, der matches med din Ap
   border-radius: 4px; /* Bløde hjørner */
   transition: background-color 0.3s ease; /* Smooth hover-effekt */
 }
+}
+@media (min-width: 768px){
+  .menu {
+  display: flex;
+  justify-content: space-between; /* Logo til venstre og links centreres */
+  align-items: center;
+  background-color: #194011; /* Baggrundsfarve */
+  padding: 15px 30px; /* Giver luft omkring elementerne */
+  color: #edead0; /* Tekstfarve */
+  font-family: "Nunito", sans-serif; /* Typografi */
+  
+}
+
+.menu .logo {
+  font-size: 24px; /* Logo-størrelse */
+  font-weight: bold; /* Fremhævet logo */
+  color: #fcdb7e; /* Kontrastfarve for logo */
+  text-decoration: none; /* Fjern underlinje */
+}
+
+.menu .nav-links {
+  display: flex;
+  justify-content: center; /* Centrér links */
+  list-style: none; /* Fjern punkttegn */
+  margin: 0 auto; /* Sørger for, at links holder sig i midten */
+  padding: 0;
+}
+
+.menu .nav-link {
+  text-decoration: none;
+  color: #edead0; 
+  padding: 10px 20px; /* Gør links større og klikbare */
+  margin: 0 10px; /* Tilføj lidt luft mellem links */
+}
+
+.menu .nav-link:hover {
+  color: #194011; /* Skift tekstfarve ved hover */
+  background-color: #fcdb7e; /* Baggrundsfarve ved hover */
+  border-radius: 6px; /* Bløde hjørner */
+}
+.badge {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.burger-menu {
+  display: none; /* Skjul burger-menu på desktop */
+}
 
 
+}
 
 </style>

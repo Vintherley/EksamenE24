@@ -49,51 +49,105 @@ async function subscribe() {
       <button type="submit" class="news-btn">Abonner</button>
     </form>
     <p v-if="message" :class="messageType">{{ message }}</p>
-    <img src="@/assets/img/olie.png" alt="illustration af camelina olie" class="olie-img" />
+    <img src="@/assets/img/olie.gif" alt="illustration af camelina olie" class="olie-img" />
   </div>
-  
 </template>
 
 <style>
-.box-news{
-    background-color:#194011;
-    height: 90px;
-    width: 395px;
-    margin-left: -7px;
+/* Mobil (op til 767px) */
+@media (max-width: 767px) {
+  .box-news {
+    background-color: #194011;
+    height: auto;
+    width: 100%;
+    padding: 20px;
+  }
 
-}
-h3{
-    display: flex;
-    justify-content: center;
-    color: #EDEAD0;
-    margin: none;
+  h3 {
+    text-align: center;
+    color: #edead0;
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
-}
+  }
 
-
-.newsletter-form {
+  .newsletter-form {
     display: flex;
-    justify-content: left; /* Sørger for at input og knap er centreret vertikalt */
-   
-}
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
-.input-news {
-    width: 200px;
-    height: 25px;
-    margin-left: 60px;
-}
+  .input-news {
+    width: 90%;
+    max-width: 300px;
+    height: 35px;
+    padding: 5px;
+  }
 
-.news-btn {
+  .news-btn {
     width: 93px;
-    height: 32px;
-    border-radius: 0px 6px 6px 0;
-    background-color: #FCDB7E;
-}
-.olie-img{
-  margin-top: -35px;
-  margin-left:10px;
-  z-index: 2;
+    height: 35px;
+    border-radius: 4px;
+    background-color: #fcdb7e;
+  }
 
+  .olie-img {
+    margin-top: 10px;
+    width: 60px;
+    height: auto;
+    align-self: center;
+  }
 }
+
+
+@media (min-width: 768px) {
+  .box-news {
+    background-color: #194011;
+    height: 100px;
+    width: 100%;
+    margin: 0 ;
+    padding: 30px;
+    
+  }
+
+  h3 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 30px;
+    color: #edead0;
+  }
+
+  .newsletter-form {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .input-news {
+    margin-left: 220px;
+    width: 80%;
+    max-width: 1020px;
+    height: 38px;
+    border-radius: 6px 0 0 6px;
+    border: none;
+  }
+
+  .news-btn {
+    width: 140px;
+    height: 40px;
+    font-size: 1rem;
+    background-color: #fcdb7e;
+    color: #323031;
+    border: none;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .olie-img {
+    width: 80px;
+    height: auto;
+    position: relative;
+    margin-top: -140px;
+  }
+}
+
 </style>
