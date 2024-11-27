@@ -20,20 +20,6 @@ const totalPrice = computed(() =>
   </div>
 </template>
 
-<style scoped>
-.summary {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ccc;
-}
+<style scoped >
 
-.checkout-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-}
 </style>
