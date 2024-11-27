@@ -1,8 +1,8 @@
 <script setup>
 import { reactive, ref, inject } from "vue";
 // Produkter
-import product2Image from "@/assets/img/product3.jpg";
-import product1Img from "@/assets/img/froeproduct.jpg";
+import product2Image from "@/assets/img/product3.png";
+import product1Img from "@/assets/img/froe.jpg";
 import product3Img from "@/assets/img/seabe.png";
 
 const products = reactive([

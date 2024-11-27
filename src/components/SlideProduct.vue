@@ -8,7 +8,7 @@ const products = ref([
     features: ['Lang holdbarhed', 'Lokal dyrket', 'Lokal produceret', 'Omega 3 fedtsyrer'],
     usage: ['Salat', 'Stegning', 'Bagning'],
     price: '105,00 kr.',
-    image: new URL('@/assets/img/product2.png', import.meta.url).href,
+    image: new URL('@/assets/img/product2.gif', import.meta.url).href,
     alt: 'Camelina olie og frø',
     link: '/Webshop',
   },
@@ -17,7 +17,7 @@ const products = ref([
     features: ['Citrus duft', 'Blødgørende', 'Håndlavet'],
     usage: ['Håndvask', 'Kropvask'],
     price: '50,00 kr.',
-    image: new URL('@/assets/img/seabe.png', import.meta.url).href,
+    image: new URL('@/assets/img/saebe-2.gif', import.meta.url).href,
     alt: 'Camelina sæbe',
     link: '/Webshop',
   },
@@ -26,7 +26,7 @@ const products = ref([
     features: ['Fiberrig', 'Lokal dyrket', 'Omega 6', 'Omega 3 fedtsyrer'],
     usage: ['Smoothie', 'Salater', 'Bagning'],
     price: '25,00 kr.',
-    image: new URL('@/assets/img/froe1.png', import.meta.url).href,
+    image: new URL('@/assets/img/froep.gif', import.meta.url).href,
     alt: 'Camelina frø',
     link: '/Webshop',
   },
@@ -75,6 +75,7 @@ function nextSlide() {
   </template>
 
 <style scoped>
+@media (max-width: 767px) {
 h2 {
   display: flex;
   justify-content: center;
@@ -170,5 +171,100 @@ button:hover {
 
 .next-btn {
   right: 0;
+}
+}
+@media (min-width: 768px) {
+  h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+}
+  .slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+  .texts-box {
+  background-color: #96bdc6;
+  width: 100%;
+  height: auto;
+  max-height: 500px ;
+  border-radius: 6px;
+  padding: 5px;
+  margin-right: 30px;
+}
+.texts-box p {
+  display: flex;
+  font-size: 18px;
+  margin: 0 3px ;
+  
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+}
+ul li {
+  font-size: 15px;
+  list-style: circle;
+  margin: 0;
+}
+.main-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.product-img {
+
+  height: auto;
+  width: 402px;
+  border-radius: 6px;
+}
+.product-btn {
+  position: absolute;
+  align-self: center;
+  margin-top: 190px;
+  left: 255px;
+  background-color: #fcdb7e;
+  color: #323031;
+  width: 67px;
+  height: 20px;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 6px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+  left: -30px;
+}
+
+.next-btn {
+  right: -30px;
+}
 }
 </style>

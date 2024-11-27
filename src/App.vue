@@ -63,6 +63,6 @@ provide('totalPrice', totalPrice);
 
 <style scoped>
 body{
-  background-color: #edead0;
+  background-color: #FFFEF2;
 }
 </style>
