@@ -181,7 +181,7 @@ button:hover {
   font-family: "Indie Flower", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 30px;
+  font-size: 50px;
 }
   .slideshow-container {
   position: relative;
@@ -202,7 +202,6 @@ button:hover {
   display: flex;
   font-size: 18px;
   margin: 0 3px ;
-  
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
 }

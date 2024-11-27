@@ -88,6 +88,8 @@ const closePopup = () => {
     display: flex;
     justify-self: start;
     margin-left: -15px;
+    font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
   }
   .input-name-email {
     display: flex;
@@ -153,4 +155,90 @@ const closePopup = () => {
   cursor: pointer;
   font-size: 14px;
 }
+@media (min-width: 769px) {
+  .background-box {
+    margin-top: 30px;
+    background-color: #194011;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    height: auto;
+    margin-left: 0;
+  }
+  .title-contakt {
+    font-size: 25px;
+    display: flex;
+    justify-self: start;
+    margin-left: -15px;
+    font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  }
+  .input-name-email {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #EDEAD0;
+    margin-bottom: 10px;
+  }
+  .input-message {
+    width: 800px;
+    height: 100px;
+    border-radius: 6px;
+    background-color: #EDEAD0;
+    margin-bottom: 10px;
+  }
+  .send-btn {
+    margin-top: 10px;
+    margin-left: 350px;
+    margin-bottom: 10px;
+    background-color: #FCDB7E;
+    border-radius: 6px;
+    width: 160px;
+    height: 30px;
+    padding: 7px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+/* Styling for pop-up */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.close-btn {
+  margin-top: 10px;
+  background-color: #FCDB7E;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 </style>

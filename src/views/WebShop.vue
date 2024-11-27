@@ -9,7 +9,7 @@ const addToCart = inject('addToCart');
 <template>
   <div>
     <h1 class="title">Shop</h1>
-    <p class="info-text">Her i shoppen sælges den gode Camelina olie og de lækre Camelina frø.</p>
+    <p class="info-text">Her i shoppen sælges den gode Camelina olie, de lækre Camelina frø og Camelina Sæbe.</p>
     <Products @add-to-cart="addToCart" />
   </div>
 </template>
@@ -21,8 +21,8 @@ body{
 }
 
 .title{
-  margin: 10px;
-  font-size: 35px;
+  margin: 20px;
+  font-size: 45px;
   font-family: "Indie Flower", cursive;
   font-weight: 400;
   font-style: normal;
@@ -31,7 +31,7 @@ body{
 
 .info-text{
   font-size: 18px;
-  margin: 10px;
+  margin: 20px;
 
 }
 </style>

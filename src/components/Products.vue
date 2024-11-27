@@ -1,9 +1,9 @@
 <script setup>
 import { reactive, ref, inject } from "vue";
 // Produkter
-import product2Image from "@/assets/img/product3.png";
-import product1Img from "@/assets/img/froe.jpg";
-import product3Img from "@/assets/img/seabe.png";
+import product2Image from "@/assets/img/producto3.gif";
+import product1Img from "@/assets/img/froep1.gif";
+import product3Img from "@/assets/img/saebe-21.gif";
 
 const products = reactive([
   {
@@ -62,12 +62,12 @@ const handleAddToCart = (product) => {
   <div class="webshop">
     <div v-for="product in products" :key="product.id" class="product-item">
         <img :src="product.imageSrc" :alt="product.imageAlt" class="product-image"/>
-      <h3>{{ product.name }}</h3>
+      <h3 class="p-name">{{ product.name }}</h3>
       <p>{{ product.price }} DKK</p>
       <div class="quantity-controls">
-        <button @click="product.quantity++">+</button>
+        <button @click="product.quantity++" class="q-btn">+</button>
         <span class="box">{{ product.quantity }}</span>
-        <button @click="product.quantity > 1 ? product.quantity-- : null">-</button>
+        <button @click="product.quantity > 1 ? product.quantity-- : null" class="q-btn">-</button>
       </div>
       <div class="action-buttons">
         <button>Læs mere</button>
@@ -79,6 +79,7 @@ const handleAddToCart = (product) => {
 </template>
 
 <style scoped>
+@media (max-width: 768px) {
 .webshop {
   display: flex;
   flex-wrap: wrap;
@@ -203,4 +204,124 @@ const handleAddToCart = (product) => {
 .popup button:hover {
   background-color: #f9c549;
 }
+}
+@media (min-width: 769px) {
+  .webshop{
+    display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  }
+  .webshop p{
+  color: #FFFEF2;
+}
+  .product-item{
+    background-color: #194011;
+    width: 350px;
+    height: 450px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    padding-top: 10px ;
+   
+  }
+
+  .product-image {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 6px;
+}
+.product-price {
+  font-size: 16px;
+  color: #FFFEF2;
+  margin-bottom: 16px;
+}
+.product-price {
+  font-size: 16px;
+  color: #FFFEF2;
+  margin-bottom: 16px;
+}
+  .quantity-controls {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.q-btn {
+  color: #FFFEF2;
+  background-color: transparent;
+}
+.p-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFEF2;
+  margin-bottom: 8px;
+}
+.box {
+  margin: 0 3px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #96BDC6;
+  color: #323031;
+  padding: 7px 10px;
+  border-radius: 6px;
+}
+.action-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
+
+.action-buttons button {
+  margin: 5px;
+  background-color: #FCDB7E;
+  border: none;
+  width: 109px;
+  height: 33px;
+  border-radius: 6px;
+  color: #323031;
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #194011;
+  color: #FFFEF2;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  width: 300px;
+  height: 200px;
+}
+
+.popup p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.popup button {
+  padding: 8px 12px;
+  background-color: #fcdb7e;
+  border: none;
+  border-radius: 6px;
+  color: #323031;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #f9c549;
+}
+}
+ 
 </style>
