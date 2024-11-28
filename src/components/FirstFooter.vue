@@ -1,9 +1,9 @@
 <script setup>
-
 </script>
 
 <template>
-    <footer class="first-footer">
+  <footer class="first-footer">
+    <div class="content">
       <div class="social-container">
         <p>Følg os her</p>
         <div class="social-icons">
@@ -12,49 +12,55 @@
         </div>
       </div>
       <div class="decoration">
-        <img src="@/assets/img/froeillustration.png" alt="Fro" />
+        <img src="@/assets/img/froeolietegning.png" alt="Fro" />
       </div>
-    </footer>
-  </template>
-  
-  <style scoped>
-  .first-footer {
-    background-color: #a2c8d0; /* Farve matcher din baggrund */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  .social-container {
+    </div>
+  </footer>
+</template>
+
+<style scoped>
+.first-footer {
+  background-color: #a2c8d0;
+  padding: 20px;
   display: flex;
-  flex-direction: row; /* Placerer teksten over ikonerne */
-  align-items: center;    /* Centrerer elementerne vandret */
-  gap: 40px;              /* Skaber afstand mellem teksten og ikonerne */
+  justify-content: center; /* Centers the content horizontally */
 }
-  
-  .social-container p {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 18px;
-    color: #000;
-    margin: 0 0 5px;
-  }
-  
-  .social-icons {
+
+.content {
   display: flex;
-  flex-direction: row;    /* Sørger for at ikonerne er på samme linje */
-  gap: 25px;              /* Skaber afstand mellem ikonerne */
+  justify-content: space-between; /* Separates social-container and decoration */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Ensures content doesn't stretch too wide */
 }
-  
-  .social-icons img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
-  
-  .decoration img {
-    height: 100px;
-    margin-top:-50px ;
-  }
-  </style>
-  
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.social-container p {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 18px;
+  color: #000;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.decoration img {
+  width: 120px; /* Adjust the size of the decorative image */
+  height: auto;
+}
+</style>
