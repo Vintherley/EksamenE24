@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCemhT4xEK0QS8jMkin92Ag4hTX9QHVq_8",
-    authDomain: "email-dc.firebaseapp.com",
-    projectId: "email-dc",
-    storageBucket: "email-dc.firebasestorage.app",
-    messagingSenderId: "738427485051",
-    appId: "1:738427485051:web:26b83fb216bc6b1941dbde"
-  };
+  apiKey: "AIzaSyBUN7fTOANY99jX9WwYMIqokDvxHfTx7ZA",
+  authDomain: "email-dc-4a625.firebaseapp.com",
+  projectId: "email-dc-4a625",
+  storageBucket: "email-dc-4a625.firebasestorage.app",
+  messagingSenderId: "789480593973",
+  appId: "1:789480593973:web:71f81c3d5c076258b5ef7c"
+};
   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);

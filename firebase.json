@@ -1,0 +1,15 @@
+{
+  
+    "hosting": {
+      "public": "dist",
+      "singlePageApp": true,
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  
+  
+}
