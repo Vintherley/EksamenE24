@@ -24,6 +24,7 @@
   padding: 20px;
   display: flex;
   justify-content: center; /* Centers the content horizontally */
+  height: 60px;
 }
 
 .content {
@@ -61,6 +62,6 @@
 
 .decoration img {
   width: 120px; /* Adjust the size of the decorative image */
-  height: auto;
 }
+
 </style>
