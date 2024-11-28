@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="decoration">
-        <img src="@/assets/img/froeolietegning.png" alt="Fro" />
+        <img src="@/assets/img/illustrationfroe.png" alt="Fro" />
       </div>
     </div>
   </footer>
